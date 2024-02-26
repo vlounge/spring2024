@@ -3,6 +3,9 @@ package com.vlad.springUrfuApp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Основное приложение, точка входа
+ */
 @SpringBootApplication
 public class SpringUrfuAppApplication {
 
