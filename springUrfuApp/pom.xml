@@ -14,28 +14,52 @@
 	<name>springUrfuApp</name>
 	<description>Spring framework educational project Java 21 Spring Boot 3.3</description>
 	<properties>
+		<spring.boot.version>3.2.3</spring.boot.version>
 		<java.version>21</java.version>
+		<oracle.database.version>23.3.0.23.09</oracle.database.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring.boot.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
+			<version>${spring.boot.version}</version>
 			<scope>runtime</scope>
 			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>2.2.224</version>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc11</artifactId>
+			<version>${oracle.database.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ucp11</artifactId>
+			<version>${oracle.database.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<version>${spring.boot.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
