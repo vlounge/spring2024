@@ -13,7 +13,6 @@ spring:
   jpa:
     properties:
         hibernate:
-          dialect: org.hibernate.dialect.H2Dialect
           ddl-auto: create
     show-sql: true
 

@@ -1,5 +1,6 @@
+com\vlad\springUrfuApp\persistence\ItemEntity.class
 com\vlad\springUrfuApp\service\ItemService.class
-com\vlad\springUrfuApp\api\ItemUserDTO.class
+com\vlad\springUrfuApp\persistence\ItemRepository.class
+com\vlad\springUrfuApp\service\ItemDTO.class
 com\vlad\springUrfuApp\SpringUrfuAppApplication.class
 com\vlad\springUrfuApp\api\ItemController.class
-com\vlad\springUrfuApp\persistence\Item.class

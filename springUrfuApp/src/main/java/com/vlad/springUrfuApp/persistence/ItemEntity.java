@@ -1,7 +1,11 @@
 package com.vlad.springUrfuApp.persistence;
 
 import jakarta.persistence.*;
-import jdk.jfr.Name;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 /**
  * Класс таблицы для хранения товаров в базе данных
  * id - Id товара
@@ -15,25 +19,28 @@ import jdk.jfr.Name;
  */
 @Table(name="item")
 @Entity
+
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
 public class ItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    Long id;
+    private Long id;
     @Column(name = "name", nullable = false)
-    String name;
+    private String name;
     @Column(name = "max_price")
-    long maxPrice;
+    private long maxPrice;
     @Column(name = "income_price")
-    long incomePrice;
+    private long incomePrice;
     @Column(name = "amount")
-    long amount;
+    private long amount;
     @Column(name = "main_manager_confirm",columnDefinition = "boolean default false", nullable = false)
-    boolean mainManagerConfirm;
+    private boolean mainManagerConfirm;
     @Column(name = "admin_confirm",columnDefinition = "boolean default false", nullable = false)
-    boolean adminConfirm;
-
-    public  ItemEntity(){}
+    private boolean adminConfirm;
 
     public ItemEntity(String name, long maxPrice, long incomePrice, long amount, boolean mainManagerConfirm, boolean adminConfirm) {
         this.name = name;
@@ -43,62 +50,4 @@ public class ItemEntity {
         this.mainManagerConfirm = mainManagerConfirm;
         this.adminConfirm = adminConfirm;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public long getMaxPrice() {
-        return maxPrice;
-    }
-
-    public void setMaxPrice(long maxPrice) {
-        this.maxPrice = maxPrice;
-    }
-
-    public long getIncomePrice() {
-        return incomePrice;
-    }
-
-    public void setIncomePrice(long incomePrice) {
-        this.incomePrice = incomePrice;
-    }
-
-    public long getAmount() {
-        return amount;
-    }
-
-    public void setAmount(long amount) {
-        this.amount = amount;
-    }
-
-    public boolean isMainManagerConfirm() {
-        return mainManagerConfirm;
-    }
-
-    public void setMainManagerConfirm(boolean mainManagerConfirm) {
-        this.mainManagerConfirm = mainManagerConfirm;
-    }
-
-    public boolean isAdminConfirm() {
-        return adminConfirm;
-    }
-
-    public void setAdminConfirm(boolean adminConfirm) {
-        this.adminConfirm = adminConfirm;
-    }
-
-
 }

@@ -1,21 +1,12 @@
 package com.vlad.springUrfuApp.service;
 
-import com.vlad.springUrfuApp.api.ItemUserDTO;
-import com.vlad.springUrfuApp.persistence.Item;
-
 import com.vlad.springUrfuApp.persistence.ItemEntity;
 import com.vlad.springUrfuApp.persistence.ItemRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.FluentQuery;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
 
 /**
  * Класс работы с товаром
@@ -23,23 +14,34 @@ import java.util.function.Function;
  * запросившего информацию о товаре.
  */
 @Service
+
+@AllArgsConstructor
+@Slf4j
 public class ItemService {
-    private final Item domainItem;
+    //private final Item domainItem;
 
     private final ItemRepository repository;
+
     /**
-     * Конструктор сервиса
+     * Метод подучения получения информации о товарах
+     * @return Информация о товарах
      */
-    public ItemService(ItemRepository repository){
-        domainItem = new Item(1,"Стать админом",0,0,1,true,true);
-        this.repository = repository;
-    }
-    /**
-     * Метод подучения получения информации о товаре
-     * @return Информация о товаре
-     */
-    public ItemUserDTO getItem(){
+    public ItemDTO[] getItems(){
         //Здесь будет логика сервиса
-        return new ItemUserDTO(domainItem.id(),domainItem.name(),domainItem.maxPrice(),domainItem.amount());
+        List<ItemEntity> itemEntityList = repository.findAll();
+        ItemDTO[] itemDTOArray = new ItemDTO[itemEntityList.size()];
+
+        int i = 0;
+        for (ItemEntity ie : itemEntityList){
+            log.info("Item entity {} {}", i, ie);
+            ItemDTO itemDTO = new ItemDTO();
+            itemDTO.setName(ie.getName());
+            itemDTO.setPrice(ie.getMaxPrice());
+            itemDTO.setAmount(ie.getAmount());
+            itemDTOArray[i] = itemDTO;
+            log.info("Item DTO {} {}", i, itemDTOArray[i]);
+            i++;
+        }
+        return itemDTOArray;
     }
 }
