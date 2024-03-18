@@ -1,7 +1,8 @@
 package com.vlad.springUrfuApp.service;
 
-import lombok.Data; /**
- * Класс товара, используется для отображения
+import lombok.Data;
+/**
+ * Класс товара, используется для обычного пользователя
  */
 @Data
 public class ItemDTO {
@@ -9,10 +10,12 @@ public class ItemDTO {
      * Название товара
      */
     private String name;
+
     /**
      * Количество товара(в штуках)
      */
     private long price;
+
     /**
      * Цена товара для пользователя
      */

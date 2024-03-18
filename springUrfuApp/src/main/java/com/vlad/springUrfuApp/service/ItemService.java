@@ -18,7 +18,6 @@ import java.util.List;
 @AllArgsConstructor
 @Slf4j
 public class ItemService {
-    //private final Item domainItem;
 
     private final ItemRepository repository;
 
@@ -43,5 +42,24 @@ public class ItemService {
             i++;
         }
         return itemDTOArray;
+    }
+
+    /**
+     * Метод создающий
+     * @param itemAdminDTO
+     * @return
+     */
+    public ItemAdminDTO newItemAdmin(ItemAdminDTO itemAdminDTO){
+        ItemEntity itemEntity = new ItemEntity(
+                itemAdminDTO.getName(),
+                itemAdminDTO.getMaxPrice(),
+                itemAdminDTO.getIncomePrice(),
+                itemAdminDTO.getAmount(),
+                itemAdminDTO.isMainManagerConfirm(),
+                itemAdminDTO.isAdminConfirm()
+        );
+        log.info("Item entity {}",itemEntity );
+        repository.save(itemEntity);
+        return itemAdminDTO;
     }
 }
