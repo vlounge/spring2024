@@ -20,13 +20,15 @@ class ItemServiceTest {
      */
     @Test
     public void newItemTest(){
-        ItemAdminDTO itemAdminDTO = new ItemAdminDTO();
-        itemAdminDTO.setName("Книга");
-        itemAdminDTO.setMaxPrice(1000);
-        itemAdminDTO.setIncomePrice(100);
-        itemAdminDTO.setAmount(2);
-        itemAdminDTO.setMainManagerConfirm(true);
-        itemAdminDTO.setAdminConfirm(true);
+        ItemAdminDTO itemAdminDTO = ItemAdminDTO
+                .builder()
+                .name("Книга")
+                .maxPrice(1000)
+                .incomePrice(100)
+                .amount(2)
+                .mainManagerConfirm(true)
+                .adminConfirm(true)
+                .build();
         service.newItemAdmin(itemAdminDTO);
         ItemDTO itemDTOFromService = service.getItems()[0];
         assertThat(itemDTOFromService.getName()).isEqualTo(itemAdminDTO.getName()).isNotBlank();

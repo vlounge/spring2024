@@ -1,4 +1,5 @@
 com\vlad\springUrfuApp\ArchUnitTest.class
+com\vlad\springUrfuApp\service\RegistrationServiceTest.class
 com\vlad\springUrfuApp\service\ItemServiceTest.class
 com\vlad\springUrfuApp\ArchTest.class
 com\vlad\springUrfuApp\SpringUrfuAppApplicationTests.class

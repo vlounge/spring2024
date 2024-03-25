@@ -29,15 +29,15 @@ public class ItemService {
         //Здесь будет логика сервиса
         List<ItemEntity> itemEntityList = repository.findAll();
         ItemDTO[] itemDTOArray = new ItemDTO[itemEntityList.size()];
-
+        ItemDTO.ItemDTOBuilder itemDTOBuilder;
         int i = 0;
         for (ItemEntity ie : itemEntityList){
             log.info("Item entity {} {}", i, ie);
-            ItemDTO itemDTO = new ItemDTO();
-            itemDTO.setName(ie.getName());
-            itemDTO.setPrice(ie.getMaxPrice());
-            itemDTO.setAmount(ie.getAmount());
-            itemDTOArray[i] = itemDTO;
+            itemDTOBuilder = ItemDTO.builder()
+                    .name(ie.getName())
+                    .price(ie.getMaxPrice())
+                    .amount(ie.getAmount());
+            itemDTOArray[i] = itemDTOBuilder.build();
             log.info("Item DTO {} {}", i, itemDTOArray[i]);
             i++;
         }

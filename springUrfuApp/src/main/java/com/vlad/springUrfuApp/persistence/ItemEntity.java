@@ -5,14 +5,6 @@ import lombok.*;
 
 /**
  * Класс таблицы для хранения товаров в базе данных
- * id - Id товара
- * name - Название товара
- * maxPrice - Максимальная цена товара
- * incomePrice - Закупочная цена товара
- * amount - Количество товара(в штуках)
- * mainManagerConfirm - Подтверждение от главного менеджера
- * adminConfirm - Подтверждение от администратора
- *
  */
 @Table(name="item")
 @Entity
@@ -22,26 +14,47 @@ import lombok.*;
 @Setter(AccessLevel.PRIVATE)
 @ToString
 public class ItemEntity {
+    /**
+     * Id товара
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
+    /**
+     * Название товара
+     */
     @Column(name = "name", nullable = false)
     private String name;
 
+    /**
+     * Максимальная цена товара
+     */
     @Column(name = "max_price")
     private long maxPrice;
 
+    /**
+     * Закупочная цена товара
+     */
     @Column(name = "income_price")
     private long incomePrice;
 
+    /**
+     * Количество товара(в штуках)
+     */
     @Column(name = "amount")
     private long amount;
 
+    /**
+     * Подтверждение от главного менеджера
+     */
     @Column(name = "main_manager_confirm",columnDefinition = "boolean default false", nullable = false)
     private boolean mainManagerConfirm;
 
+    /**
+     * Подтверждение от администратора
+     */
     @Column(name = "admin_confirm",columnDefinition = "boolean default false", nullable = false)
     private boolean adminConfirm;
 

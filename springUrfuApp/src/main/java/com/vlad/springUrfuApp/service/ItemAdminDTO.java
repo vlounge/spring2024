@@ -1,10 +1,15 @@
 package com.vlad.springUrfuApp.service;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 /**
  * Класс товара, используется для администратора
  */
+@Builder
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Data
 public class ItemAdminDTO {
 
