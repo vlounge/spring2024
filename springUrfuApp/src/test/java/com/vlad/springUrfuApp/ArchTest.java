@@ -16,20 +16,28 @@ public class ArchTest {
     void testArchitecture() {
         ArchRule rule = Architectures.layeredArchitecture()
                 .consideringAllDependencies()
-                .layer("Api").definedBy("..api..")
-                .layer("Service").definedBy("..service..")
-                .layer("Persistence").definedBy("..persistence..")
+                .layer("Extern").definedBy("..extern..")
+                .layer("Domain").definedBy("..domain..")
+                .layer("App").definedBy("..app..")
                 // Add constraints
-                .whereLayer("Api").mayNotBeAccessedByAnyLayer()
-                .whereLayer("Service").mayOnlyBeAccessedByLayers("Api")
-                .whereLayer("Persistence").mayOnlyBeAccessedByLayers("Service");
+                .whereLayer("Extern").mayNotBeAccessedByAnyLayer()
+                .whereLayer("App").mayOnlyBeAccessedByLayers("Extern")
+                .whereLayer("Domain").mayOnlyBeAccessedByLayers("App","Extern");
         rule.check(classes);
     }
 
     @Test
-    void testApiLayerDoesNotContainPersistence() {
-        ArchRule rule = noClasses().that().resideInAPackage("..api..")
-                .should().accessClassesThat().resideInAPackage("..persistence..");
+    void testDomainLayerDoesNotContainExternal() {
+        ArchRule rule = noClasses().that().resideInAPackage("..domain..")
+                .should().accessClassesThat().resideInAPackage("..extern..");
+
+        rule.check(classes);
+    }
+    
+    @Test
+    void testDomainLayerDoesNotContainApp() {
+        ArchRule rule = noClasses().that().resideInAPackage("..domain..")
+                .should().accessClassesThat().resideInAPackage("..app..");
 
         rule.check(classes);
     }
