@@ -21,7 +21,7 @@ public class AppUserRepositoryTest {
     
     @Test
     void saveAppUserTest(){
-        AppUserEntity appUserEntity = new AppUserEntity("123.456.789.10", "Первоуральск");
+        AppUserEntity appUserEntity = new AppUserEntity("123.456.789.10", "Первоуральск", "+70000000000", "Петя", "password");
         AppUserEntity returnedAppUserEntity = repository.save(appUserEntity);
         boolean testResult = returnedAppUserEntity.equals(appUserEntity);
         assertThat(testResult).isEqualTo(true);

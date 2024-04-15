@@ -35,8 +35,29 @@ public class AppUserEntity {
     @Column(name = "city")
     private String city;
 
-    public AppUserEntity(String ip, String city){
+    /**
+     * Номер телефона пользователя
+     */
+    @Column(name = "phone_number", nullable = false, unique = true)
+    private String phoneNumber;
+
+    /**
+     * Имя пользователя
+     */
+    @Column(name = "name")
+    private String name;
+
+    /**
+     * Пароль пользователя
+     */
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    public AppUserEntity(String ip, String city, String phoneNumber, String name, String password){
         this.ip = ip;
         this.city = city;
+        this.phoneNumber = phoneNumber;
+        this.name = name;
+        this.password =password;
     }
 }

@@ -1,8 +1,7 @@
 package com.vlad.springUrfuApp.extern;
 
-import com.vlad.springUrfuApp.app.RegistrationService;
+import com.vlad.springUrfuApp.app.AppUserService;
 import com.vlad.springUrfuApp.domain.AppUserEntity;
-import com.vlad.springUrfuApp.domain.RegisteredUserEntity;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -16,30 +15,28 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 @Slf4j
 public class UserController {
-    private final RegistrationService registrationService;
+    private final AppUserService appUserService;
     
     /**
      * Метод регистрации нового пользователя
-     * @return Данные о зарегистрированном пользователе
+     * @return Данные о пользователе
      */
     @PostMapping
     public UserRegistrationDTO postItemAdmin(@RequestBody UserRegistrationDTO registrationDTO){
-        AppUserEntity appUserEntity = registrationService.newUser(new AppUserEntity(
+        AppUserEntity appUserEntity = appUserService.newUser(new AppUserEntity(
                 registrationDTO.getIp(),
-                registrationDTO.getCity())
+                registrationDTO.getCity(),
+                registrationDTO.getPhoneNumber(),
+                null,
+                registrationDTO.getPassword()
+                )
+
         );
-        RegisteredUserEntity registeredUserEntity = registrationService.newRegisteredUser(
-                    new RegisteredUserEntity(
-                            appUserEntity.getId(),
-                            registrationDTO.getPhoneNumber(),
-                            registrationDTO.getPassword()
-                            )
-                );       
         return UserRegistrationDTO.builder()
                 .ip(registrationDTO.getIp())
                 .city(registrationDTO.getCity())
-                .phoneNumber(registeredUserEntity.getPhoneNumber())
-                .password(registeredUserEntity.getPassword())
+                .phoneNumber(registrationDTO.getPhoneNumber())
+                .password("***")
                 .build();
     }
 }

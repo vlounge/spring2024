@@ -12,15 +12,21 @@ import lombok.Data;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Data
 public class OrderDTO {
+
     /**
-     * Id незарегистрированного пользователя
+     * Id пользователя, если незарегистрированный приходит -1
      */
     private long userId;
 
     /**
-     * Id зарегистрированного пользователя
+     * IP-адрес пользователя
      */
-    private long regUserId;
+    private String ip;
+
+    /**
+     * Город пользователя
+     */
+    private String city;
 
     /**
      * Номер телефона покупателя

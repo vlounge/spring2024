@@ -32,9 +32,16 @@ public class OrderEntity {
     @Column(name = "ready_for_issue", nullable = false)
     private boolean readyForIssue;
 
+    /**
+     * ID товара
+     */
+    @Column(name = "item_id", nullable = false)
+    private long itemId;
 
-    public OrderEntity(long buyerId, boolean readyForIssue){
+
+    public OrderEntity(long buyerId, boolean readyForIssue, long itemId){
         this.buyerId = buyerId;
         this.readyForIssue = readyForIssue;
+        this.itemId = itemId;
     }
 }
