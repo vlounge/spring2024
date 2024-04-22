@@ -30,9 +30,9 @@ public class OrderController {
      */
     @PostMapping
     public OrderDTO postOrder(@RequestBody OrderDTO orderDTO){
-
+        log.trace("OrderDTO {} ", orderDTO);
         long appUserId = orderDTO.getUserId();
-        if(orderDTO.getUserId()<0){
+        if(orderDTO.isUserNew()){
             AppUserEntity appUserEntity = appUserService.newUser(new AppUserEntity(
                             orderDTO.getIp(),
                             orderDTO.getCity(),

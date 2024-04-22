@@ -3,7 +3,7 @@ package com.vlad.springUrfuApp.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Table(name="order")
+@Table(name="orders")
 @Entity
 
 @NoArgsConstructor

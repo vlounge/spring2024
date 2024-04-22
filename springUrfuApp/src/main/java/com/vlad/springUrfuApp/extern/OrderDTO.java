@@ -14,7 +14,7 @@ import lombok.Data;
 public class OrderDTO {
 
     /**
-     * Id пользователя, если незарегистрированный приходит -1
+     * Id пользователя, если незарегистрированный 0 или меньше
      */
     private long userId;
 
@@ -42,4 +42,13 @@ public class OrderDTO {
      * Id товара
      */
     private long itemId;
+
+    /**
+     * Метод определения является ли пользователь новым,
+     * true - пользователь новый
+     * false - id зарегистрированного пользователя записывается в поле userId
+     */
+    public boolean isUserNew(){
+        return userId<=0;
+    };
 }

@@ -18,7 +18,7 @@ public class OrderService {
     private final OrderRepository orderRepository;
 
     /**
-     * Метод создающий зака
+     * Метод создающий заказ
      * @param orderEntity entity для нового заказа
      * @return id нового заказа из таблицы заказов
      */
